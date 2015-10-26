@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="AddressBook.Views.PersonSummaryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:designData="clr-namespace:AddressBook.DesignData"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=designData:DPersonViewModel, IsDesignTimeCreatable=True}"
+             d:DesignHeight="55" d:DesignWidth="500" BorderBrush="DarkGray" BorderThickness="1" Background="#33FFFFFF">
+    
+    <UserControl.Resources>
+        <ControlTemplate x:Key="LinkButton" TargetType="{x:Type Button}">
+            <TextBlock HorizontalAlignment="Center" Text="{TemplateBinding Content}" Cursor="Hand" VerticalAlignment="Center" TextDecorations="Underline" Foreground="#FF0025BA"/>
+        </ControlTemplate>
+    </UserControl.Resources>
+    <Grid Margin="5">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <TextBlock Text="{Binding Name}" FontSize="13" FontWeight="Bold"/>
+            <TextBlock Text=" " FontSize="13" FontWeight="Bold"/>
+            <TextBlock Text="{Binding Surname}" FontSize="13" FontWeight="Bold"/>
+        </StackPanel>
+
+        <StackPanel Orientation="vertical" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,70,0" Width="130">
+            <TextBlock Text="{Binding Address1}" FontSize="8" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding Address2}" FontSize="8" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding Address3}" FontSize="8" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding City}" FontSize="8" HorizontalAlignment="Center"/>
+        </StackPanel>
+        
+        <Button Template="{StaticResource LinkButton}" Command="{Binding EditCommand}" Content="Details" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,3,5,0" />
+        <Button Template="{StaticResource LinkButton}" Command="{Binding DeleteCommand}" Content="Delete" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,5,3" />
+
+    </Grid>
+</UserControl>
